@@ -1,21 +1,21 @@
-2024-12-20 13:29:55,343 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 Question: What is the SQL query to select all columns from a table named 'users'?
 SELECT * FROM users
-2024-12-20 13:29:55,343 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 What is the SQL query to select all columns from orders where product is 'Laptop' and quantity is greater than or equal to 5?
 SELECT * FROM orders WHERE product = 'Laptop' AND quantity >= 5
-2024-12-20 13:29:55,343 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 What is the SQL query to select all users and conditionally filter by age if user_age is 18 or older?
 SELECT * FROM users  WHERE age >= 18;
-2024-12-20 13:29:55,343 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 What is the SQL query to select all users and check if they are adults based on user_age?
 SELECT * FROM users WHERE  adult = True ;
-2024-12-20 13:29:55,359 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 What is the SQL query to select products based on stock performance categories?
 SELECT * FROM products where
  performance = 'average' 
 
-2024-12-20 13:29:55,362 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 What is the SQL query to select products based on category and price?
 SELECT *
 FROM products where 
@@ -24,7 +24,7 @@ FROM products where
     
         'normal'
     
-2024-12-20 13:29:55,364 - INFO - 
+2024-12-31 09:44:58,513 - INFO - 
 What is the SQL query to select orders where order_id is in a given list?
 SELECT *
 FROM orders
@@ -33,7 +33,7 @@ WHERE order_id IN (
     1234,
     5678,
     9012)
-2024-12-20 13:29:55,366 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query to select orders based on nested project IDs and their associated order IDs?
 SELECT *
 FROM orders
@@ -47,12 +47,12 @@ WHERE order_id IN (
         3456
     
         7890)
-2024-12-20 13:29:55,367 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query to select users based on their username converted to lowercase?
 SELECT *
 FROM users
 WHERE username = 'john'
-2024-12-20 13:29:55,368 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query to dynamically select columns from the users table?
 
 
@@ -63,14 +63,14 @@ SELECT
     email, 
     created_at
 FROM users
-2024-12-20 13:29:55,371 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query to select from either 'orders' or 'orders_staging' based on production status?
 
 
 SELECT *
 FROM orders
 WHERE order_date >= '2023-01-01'
-2024-12-20 13:29:55,374 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query to filter orders based on a list of statuses?
 
 
@@ -81,7 +81,7 @@ WHERE status IN (
         'pending',
         'processing',
         'shipped')
-2024-12-20 13:29:55,376 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query that uses a macro to get the latest partition date from sales_data?
 
 
@@ -94,7 +94,7 @@ SELECT MAX(partition_date) FROM sales_data
 SELECT *
 FROM sales_data
 WHERE partition_date = (SELECT * FROM latest_data)
-2024-12-20 13:29:55,378 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query that dynamically pivots metrics based on a list of metrics?
 
 
@@ -105,7 +105,7 @@ date,
     SUM(CASE WHEN metric_name = 'cost' THEN metric_value ELSE 0 END) AS cost,
     SUM(CASE WHEN metric_name = 'profit' THEN metric_value ELSE 0 END) AS profitFROM metrics_table
 GROUP BY date
-2024-12-20 13:29:55,379 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query that generates UNION ALL queries for specific dates?
 
 
@@ -119,7 +119,7 @@ WHERE order_date = '2023-02-01' UNION ALL
 SELECT *
 FROM orders
 WHERE order_date = '2023-03-01'
-2024-12-20 13:29:55,381 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query that filters users based on a dynamic date column and days back parameter?
 
 
@@ -127,7 +127,7 @@ What is the SQL query that filters users based on a dynamic date column and days
 SELECT *
 FROM users
 WHERE created_at >= DATEADD(day, -30, CURRENT_DATE)
-2024-12-20 13:29:55,383 - INFO - 
+2024-12-31 09:44:58,523 - INFO - 
 What is the SQL query that conditionally aggregates sales data based on a grouping column?
 
 
