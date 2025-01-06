@@ -1,4 +1,19 @@
 """
+Clone Public Repository: 
+`https://github.com/bilalbobat/data_engineer`
+
+Navigating into the Directory: 
+
+Creating a Virtual Environment: 
+Activating the Virtual Environment: 
+Installing Dependencies: 
+
+Populate `candidate.py` with the relevant code and complete the `query_str`.
+Run `candidate.py`
+"""
+
+
+"""
 Question: How can I implement a logging mechanism in a Python application to log SQL queries, including the setup for a log file named app.log, 
 configuring the logging level to INFO, specifying a custom format for log messages '%(asctime)s - %(levelname)s - %(message)s', and ensuring 
 that the log file is overwritten each time the application runs? 
