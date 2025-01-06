@@ -1,5 +1,10 @@
 from jinja2 import Template
+
 import logging
+
+def log_query(question, query):
+    logging.info(f"\n{question}\n{query}")
+
 
 logging.basicConfig(
     filename='app.log',  # Specify the file name
@@ -12,29 +17,25 @@ question = "Question: What is the SQL query to select all columns from a table n
 query_str = "SELECT * FROM {{ table_name }}"
 template = Template(query_str)
 query = template.render(table_name="users")
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select all columns from orders where product is 'Laptop' and quantity is greater than or equal to 5?"
-query_str = "SELECT * FROM orders WHERE product = '{{ product }}' AND quantity >= {{ min_quantity }}"
+query_str = "SELECT ..."
 template = Template(query_str)
 query = template.render(product='Laptop', min_quantity=5)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select all users and conditionally filter by age if user_age is 18 or older?"
-query_str = """SELECT * FROM users {% if user_age >= 18 %} WHERE age >= {{ user_age }}{% endif -%};"""
+query_str = "SELECT ..."
 template = Template(query_str)
 query = template.render(user_age=18)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select all users and check if they are adults based on user_age?"
-query_str = """SELECT * FROM users WHERE {% if user_age >= 18 %} adult = True {% else %} adult = False {% endif -%};"""
+query_str = "SELECT ..."
 template = Template(query_str)
 query = template.render(user_age=30)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select products based on stock performance categories?"
 query_str = """SELECT * FROM products where
@@ -44,8 +45,7 @@ query_str = """SELECT * FROM products where
 """
 template = Template(query_str)
 query = template.render(product_stock=999)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select products based on category and price?"
 query_str = """SELECT *
@@ -63,8 +63,7 @@ FROM products where
 """
 template = Template(query_str)
 query = template.render(product_category="Electronics", product_price=450)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select orders where order_id is in a given list?"
 query_str = """SELECT *
@@ -76,8 +75,7 @@ WHERE order_id IN (
 )"""
 template = Template(query_str)
 query = template.render(order_ids=[1234, 5678, 9012])
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select orders based on nested project IDs and their associated order IDs?"
 query_str = """SELECT *
@@ -96,8 +94,7 @@ orders = {
     'project3': [7890]
 }
 query = template.render(project_ids=orders.keys(), orders=orders)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select users based on their username converted to lowercase?"
 query_str = """SELECT *
@@ -105,8 +102,7 @@ FROM users
 WHERE username = '{{ username | lower }}'"""
 template = Template(query_str)
 query = template.render(username='JOHN')
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to dynamically select columns from the users table?"
 query_str = """
@@ -119,8 +115,7 @@ FROM users
 """
 template = Template(query_str)
 query = template.render()
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to select from either 'orders' or 'orders_staging' based on production status?"
 query_str = """
@@ -131,8 +126,7 @@ WHERE order_date >= '{{ start_date }}'
 """
 template = Template(query_str)
 query = template.render(is_production=True, start_date='2023-01-01')
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query to filter orders based on a list of statuses?"
 query_str = """
@@ -146,8 +140,7 @@ WHERE status IN (
 )"""
 template = Template(query_str)
 query = template.render()
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query that uses a macro to get the latest partition date from sales_data?"
 query_str = """
@@ -163,8 +156,7 @@ FROM sales_data
 WHERE partition_date = (SELECT * FROM latest_data)"""
 template = Template(query_str)
 query = template.render()
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query that dynamically pivots metrics based on a list of metrics?"
 query_str = """
@@ -178,8 +170,7 @@ FROM metrics_table
 GROUP BY date"""
 template = Template(query_str)
 query = template.render()
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query that generates UNION ALL queries for specific dates?"
 query_str = """
@@ -192,8 +183,7 @@ WHERE order_date = '{{ date }}'{% if not loop.last %} UNION ALL {% endif -%}
 """
 template = Template(query_str)
 query = template.render()
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query that filters users based on a dynamic date column and days back parameter?"
 query_str = """
@@ -204,8 +194,7 @@ FROM users
 WHERE {{ date_column }} >= DATEADD(day, -{{ days_back }}, CURRENT_DATE)"""
 template = Template(query_str)
 query = template.render()
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
 
 question = "What is the SQL query that conditionally aggregates sales data based on a grouping column?"
 query_str = """
@@ -217,5 +206,4 @@ FROM sales
 GROUP BY {{ group_by_column }}"""
 template = Template(query_str)
 query = template.render(group_by_category=True)
-print(query)
-logging.info(f"\n{question}\n{query}")
+log_query(question, query)
