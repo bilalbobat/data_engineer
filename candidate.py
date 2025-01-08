@@ -1,24 +1,38 @@
 """
+Step 1
 Clone Public Repository: 
 `https://github.com/bilalbobat/data_engineer`
 
-Navigate into the Directory: 
+Step 2
+Navigate into the Directory data_engineer: 
 
-Creating a Virtual Environment: 
-Activate the Virtual Environment: 
-Install Dependencies: 
+Step 3
+Create a Virtual Environment
 
-Populate `candidate.py` with the relevant code and complete the `query_str`.
+Step 4
+Activate the Virtual Environment
+
+Step 5
+Install Dependencies from requirements.txt file 
+
+Instructions:
+
+Populate `candidate.py` with the relevant code by completing each of the `query_str`
+with missing code.
+
 Run `candidate.py`
 """
 
-# Q1
+# Q1.a
 """
 Question: How can I implement a logging mechanism in a Python application to log SQL queries, including the setup for a log file named 'app.log', 
 configuring the logging level to 'INFO', specifying a custom format for log messages '%(asctime)s - %(levelname)s - %(message)s', and ensuring 
 that the log file is overwritten each time the application runs? 
+"""
 
-Additionally, how can I create a function to log both the question and the corresponding SQL query?
+# Q1.b
+"""
+Question: How can I create a function to log both the question and the corresponding SQL query?
 """
 
 from jinja2 import Template
